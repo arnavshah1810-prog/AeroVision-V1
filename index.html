@@ -3,388 +3,245 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>AeroVision™ | Explore. Simulate. Innovate.</title>
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
-}
+<link rel="stylesheet" href="style.css">
 
-body{
-background:#050505;
-color:white;
-overflow-x:hidden;
-}
-
-#stars{
-position:fixed;
-width:100%;
-height:100%;
-background:
-radial-gradient(white 1px,transparent 1px),
-radial-gradient(white 1px,transparent 1px);
-background-size:50px 50px;
-background-position:0 0,25px 25px;
-opacity:.15;
-z-index:-1;
-animation:moveStars 120s linear infinite;
-}
-
-@keyframes moveStars{
-from{transform:translateY(0);}
-to{transform:translateY(-1000px);}
-}
-
-nav{
-position:fixed;
-top:0;
-width:100%;
-display:flex;
-justify-content:space-between;
-padding:20px 8%;
-background:rgba(0,0,0,.4);
-backdrop-filter:blur(10px);
-z-index:1000;
-}
-
-.logo{
-color:#D4AF37;
-font-weight:bold;
-font-size:1.3rem;
-}
-
-nav ul{
-display:flex;
-list-style:none;
-gap:30px;
-}
-
-nav a{
-text-decoration:none;
-color:white;
-}
-
-.hero{
-height:100vh;
-display:flex;
-justify-content:space-around;
-align-items:center;
-padding:0 10%;
-}
-
-.hero-text h1{
-font-size:4rem;
-line-height:1.1;
-}
-
-.hero-text p{
-margin-top:20px;
-font-size:1.2rem;
-color:#aaa;
-}
-
-.btn{
-display:inline-block;
-margin-top:30px;
-padding:15px 30px;
-background:#D4AF37;
-color:black;
-font-weight:bold;
-border-radius:10px;
-text-decoration:none;
-transition:.3s;
-}
-
-.btn:hover{
-transform:translateY(-4px);
-}
-
-.earth{
-width:350px;
-height:350px;
-border-radius:50%;
-background:
-radial-gradient(circle at 30% 30%, #53c5ff, #003366);
-box-shadow:0 0 80px rgba(212,175,55,.4);
-animation:float 6s ease-in-out infinite;
-}
-
-@keyframes float{
-50%{
-transform:translateY(-20px);
-}
-}
-
-section{
-padding:120px 10%;
-}
-
-.section-title{
-text-align:center;
-font-size:2.5rem;
-margin-bottom:50px;
-}
-
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-}
-
-.card{
-background:#0d1117;
-padding:30px;
-border-radius:20px;
-transition:.3s;
-border:1px solid rgba(255,255,255,.05);
-}
-
-.card:hover{
-transform:translateY(-10px);
-box-shadow:0 0 30px rgba(212,175,55,.3);
-}
-
-.card h3{
-color:#D4AF37;
-margin-bottom:10px;
-}
-
-.dashboard{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:25px;
-margin-top:40px;
-}
-
-.metric{
-background:#0d1117;
-padding:30px;
-border-radius:20px;
-text-align:center;
-}
-
-.metric h2{
-color:#D4AF37;
-margin-top:10px;
-}
-
-select{
-width:100%;
-padding:15px;
-margin:10px 0;
-border:none;
-border-radius:10px;
-}
-
-button{
-width:100%;
-padding:15px;
-background:#D4AF37;
-border:none;
-font-weight:bold;
-border-radius:10px;
-cursor:pointer;
-margin-top:10px;
-}
-
-footer{
-padding:60px;
-text-align:center;
-border-top:1px solid #222;
-}
-
-footer h3{
-color:#D4AF37;
-margin-bottom:10px;
-}
-
-@media(max-width:900px){
-
-.hero{
-flex-direction:column;
-text-align:center;
-padding-top:120px;
-}
-
-.hero-text h1{
-font-size:3rem;
-}
-
-.earth{
-width:250px;
-height:250px;
-margin-top:40px;
-}
-
-}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
+
 <body>
+
+<div id="loader">
+    <div class="loader-logo">AeroVision™</div>
+    <div class="loader-line"></div>
+</div>
 
 <div id="stars"></div>
 
-<nav>
-<div class="logo">AeroVision™</div>
+<header>
+    <nav>
 
-<ul>
-<li><a href="#rockets">Rockets</a></li>
-<li><a href="#planner">Mission Planner</a></li>
-</ul>
-</nav>
+        <div class="logo">
+            AeroVision™
+        </div>
 
-<section class="hero">
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#missions">Missions</a></li>
+            <li><a href="#control">Mission Control</a></li>
+            <li><a href="#footer">Contact</a></li>
+        </ul>
 
-<div class="hero-text">
-<h1>Explore.<br>Simulate.<br>Innovate.</h1>
+    </nav>
+</header>
 
-<p>
-The future of aerospace mission planning.
-</p>
+<section id="hero">
 
-<a href="#planner" class="btn">
-Launch Mission →
-</a>
-</div>
+    <div class="hero-text">
 
-<div class="earth"></div>
+        <span class="premium-tag">
+            Aerospace Technology Platform
+        </span>
 
-</section>
+        <h1>
+            Explore.<br>
+            Simulate.<br>
+            Innovate.
+        </h1>
 
-<section id="rockets">
+        <p>
+            Building the next generation of mission planning,
+            aerospace simulation, and orbital operations.
+        </p>
 
-<h2 class="section-title">
-Launch Systems
-</h2>
+        <div class="hero-buttons">
 
-<div class="cards">
+            <button class="gold-btn">
+                Launch Mission
+            </button>
 
-<div class="card">
-<h3>Falcon Heavy</h3>
-<p>Heavy-lift launch vehicle optimized for reliability and payload delivery.</p>
-</div>
+            <button class="outline-btn">
+                Learn More
+            </button>
 
-<div class="card">
-<h3>Starship</h3>
-<p>Fully reusable next-generation spacecraft for interplanetary missions.</p>
-</div>
+        </div>
 
-<div class="card">
-<h3>NASA SLS</h3>
-<p>Deep-space exploration rocket designed for lunar and Mars missions.</p>
-</div>
+    </div>
 
-</div>
+    <div class="hero-planet">
 
-</section>
+        <div class="earth-glow"></div>
 
-<section id="planner">
+        <div class="earth"></div>
 
-<h2 class="section-title">
-Mission Planner
-</h2>
-
-<select id="destination">
-<option>Earth Orbit</option>
-<option>Moon</option>
-<option>Mars</option>
-</select>
-
-<button onclick="simulateMission()">
-Simulate Mission
-</button>
-
-<div class="dashboard">
-
-<div class="metric">
-Mission Fuel
-<h2 id="fuel">0%</h2>
-</div>
-
-<div class="metric">
-Velocity
-<h2 id="velocity">0 km/s</h2>
-</div>
-
-<div class="metric">
-Status
-<h2 id="status">Ready</h2>
-</div>
-
-</div>
+    </div>
 
 </section>
 
-<footer>
+<section id="missions">
 
-<h3>AeroVision™</h3>
+    <div class="section-title">
 
-<p>Explore. Simulate. Innovate.</p>
+        <span>Capabilities</span>
 
-<br>
+        <h2>
+            Mission Architecture
+        </h2>
 
-<p>
-© 2026 AeroVision Technologies. All Rights Reserved.
-</p>
+    </div>
+
+    <div class="mission-grid">
+
+        <div class="mission-card">
+
+            <h3>
+                Lunar Operations
+            </h3>
+
+            <p>
+                Simulate trajectories,
+                payload delivery,
+                and orbital insertion.
+            </p>
+
+        </div>
+
+        <div class="mission-card">
+
+            <h3>
+                Mars Expedition
+            </h3>
+
+            <p>
+                Deep-space mission planning
+                with advanced telemetry.
+            </p>
+
+        </div>
+
+        <div class="mission-card">
+
+            <h3>
+                Orbital Deployment
+            </h3>
+
+            <p>
+                Satellite deployment and
+                launch optimization.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section id="control">
+
+    <div class="section-title">
+
+        <span>Live System</span>
+
+        <h2>
+            Mission Control
+        </h2>
+
+    </div>
+
+    <div class="dashboard">
+
+        <div class="stat-card">
+
+            <span>Fuel Reserve</span>
+
+            <h3 id="fuel">
+                98%
+            </h3>
+
+        </div>
+
+        <div class="stat-card">
+
+            <span>Velocity</span>
+
+            <h3 id="velocity">
+                16.4 km/s
+            </h3>
+
+        </div>
+
+        <div class="stat-card">
+
+            <span>Target</span>
+
+            <h3>
+                Mars
+            </h3>
+
+        </div>
+
+        <div class="stat-card">
+
+            <span>Status</span>
+
+            <h3 id="status">
+                Active
+            </h3>
+
+        </div>
+
+    </div>
+
+    <div class="launch-panel">
+
+        <div class="countdown">
+
+            T-10
+
+        </div>
+
+        <div class="trajectory">
+
+            <div class="planet earth-mini"></div>
+
+            <div class="line"></div>
+
+            <div class="rocket">
+                ▲
+            </div>
+
+            <div class="planet mars-mini"></div>
+
+        </div>
+
+        <button id="launchButton">
+            Initiate Launch
+        </button>
+
+    </div>
+
+</section>
+
+<footer id="footer">
+
+    <div class="footer-logo">
+        AeroVision™
+    </div>
+
+    <p>
+        Engineering the next era of exploration.
+    </p>
+
+    <small>
+        © 2026 AeroVision Technologies.
+        All Rights Reserved.
+    </small>
 
 </footer>
 
-<script>
-
-function animateValue(id,target,suffix){
-
-let value=0;
-
-let interval=setInterval(()=>{
-
-value+=target/50;
-
-if(value>=target){
-value=target;
-clearInterval(interval);
-}
-
-document.getElementById(id).innerText=
-value.toFixed(1)+suffix;
-
-},20);
-
-}
-
-function simulateMission(){
-
-let destination=
-document.getElementById("destination").value;
-
-let fuel;
-let velocity;
-
-if(destination==="Earth Orbit"){
-fuel=78;
-velocity=7.8;
-}
-
-if(destination==="Moon"){
-fuel=92;
-velocity=11.2;
-}
-
-if(destination==="Mars"){
-fuel=99;
-velocity=16.4;
-}
-
-animateValue("fuel",fuel,"%");
-animateValue("velocity",velocity," km/s");
-
-document.getElementById("status").innerText=
-"Mission Active";
-
-}
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
