@@ -3,197 +3,385 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AeroVision - Mission Planner</title>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<title>AeroVision™ | Explore. Simulate. Innovate.</title>
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
 }
 
 body{
-    background:#0d0d0d;
-    color:white;
+background:#050505;
+color:white;
+overflow-x:hidden;
 }
 
-header{
-    text-align:center;
-    padding:30px;
-    background:#111;
-    border-bottom:2px solid gold;
+#stars{
+position:fixed;
+width:100%;
+height:100%;
+background:
+radial-gradient(white 1px,transparent 1px),
+radial-gradient(white 1px,transparent 1px);
+background-size:50px 50px;
+background-position:0 0,25px 25px;
+opacity:.15;
+z-index:-1;
+animation:moveStars 120s linear infinite;
 }
 
-header h1{
-    color:gold;
-    font-size:3rem;
+@keyframes moveStars{
+from{transform:translateY(0);}
+to{transform:translateY(-1000px);}
 }
 
-.container{
-    max-width:1000px;
-    margin:auto;
-    padding:30px;
+nav{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+padding:20px 8%;
+background:rgba(0,0,0,.4);
+backdrop-filter:blur(10px);
+z-index:1000;
+}
+
+.logo{
+color:#D4AF37;
+font-weight:bold;
+font-size:1.3rem;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:30px;
+}
+
+nav a{
+text-decoration:none;
+color:white;
+}
+
+.hero{
+height:100vh;
+display:flex;
+justify-content:space-around;
+align-items:center;
+padding:0 10%;
+}
+
+.hero-text h1{
+font-size:4rem;
+line-height:1.1;
+}
+
+.hero-text p{
+margin-top:20px;
+font-size:1.2rem;
+color:#aaa;
+}
+
+.btn{
+display:inline-block;
+margin-top:30px;
+padding:15px 30px;
+background:#D4AF37;
+color:black;
+font-weight:bold;
+border-radius:10px;
+text-decoration:none;
+transition:.3s;
+}
+
+.btn:hover{
+transform:translateY(-4px);
+}
+
+.earth{
+width:350px;
+height:350px;
+border-radius:50%;
+background:
+radial-gradient(circle at 30% 30%, #53c5ff, #003366);
+box-shadow:0 0 80px rgba(212,175,55,.4);
+animation:float 6s ease-in-out infinite;
+}
+
+@keyframes float{
+50%{
+transform:translateY(-20px);
+}
+}
+
+section{
+padding:120px 10%;
+}
+
+.section-title{
+text-align:center;
+font-size:2.5rem;
+margin-bottom:50px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
 }
 
 .card{
-    background:#181818;
-    padding:25px;
-    border-radius:15px;
-    margin-bottom:25px;
-    border:1px solid #333;
+background:#0d1117;
+padding:30px;
+border-radius:20px;
+transition:.3s;
+border:1px solid rgba(255,255,255,.05);
 }
 
-label{
-    display:block;
-    margin-top:15px;
-    margin-bottom:5px;
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 30px rgba(212,175,55,.3);
+}
+
+.card h3{
+color:#D4AF37;
+margin-bottom:10px;
+}
+
+.dashboard{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:25px;
+margin-top:40px;
+}
+
+.metric{
+background:#0d1117;
+padding:30px;
+border-radius:20px;
+text-align:center;
+}
+
+.metric h2{
+color:#D4AF37;
+margin-top:10px;
 }
 
 select{
-    width:100%;
-    padding:10px;
-    border:none;
-    border-radius:8px;
+width:100%;
+padding:15px;
+margin:10px 0;
+border:none;
+border-radius:10px;
 }
 
 button{
-    margin-top:20px;
-    width:100%;
-    padding:12px;
-    background:gold;
-    color:black;
-    border:none;
-    font-weight:bold;
-    border-radius:8px;
-    cursor:pointer;
+width:100%;
+padding:15px;
+background:#D4AF37;
+border:none;
+font-weight:bold;
+border-radius:10px;
+cursor:pointer;
+margin-top:10px;
 }
 
-button:hover{
-    opacity:0.9;
+footer{
+padding:60px;
+text-align:center;
+border-top:1px solid #222;
 }
 
-.results{
-    margin-top:20px;
-    line-height:2;
+footer h3{
+color:#D4AF37;
+margin-bottom:10px;
 }
 
-canvas{
-    margin-top:20px;
+@media(max-width:900px){
+
+.hero{
+flex-direction:column;
+text-align:center;
+padding-top:120px;
+}
+
+.hero-text h1{
+font-size:3rem;
+}
+
+.earth{
+width:250px;
+height:250px;
+margin-top:40px;
+}
+
 }
 </style>
 </head>
-
 <body>
 
-<header>
-    <h1>🚀 AeroVision</h1>
-    <p>Aerospace Mission Planner</p>
-</header>
+<div id="stars"></div>
 
-<div class="container">
+<nav>
+<div class="logo">AeroVision™</div>
 
-    <div class="card">
+<ul>
+<li><a href="#rockets">Rockets</a></li>
+<li><a href="#planner">Mission Planner</a></li>
+</ul>
+</nav>
 
-        <h2>Mission Configuration</h2>
+<section class="hero">
 
-        <label>Rocket Type</label>
-        <select id="rocket">
-            <option value="falcon">Falcon Heavy</option>
-            <option value="starship">Starship</option>
-            <option value="sls">NASA SLS</option>
-        </select>
+<div class="hero-text">
+<h1>Explore.<br>Simulate.<br>Innovate.</h1>
 
-        <label>Mission</label>
-        <select id="mission">
-            <option value="satellite">Satellite Launch</option>
-            <option value="moon">Moon Mission</option>
-            <option value="mars">Mars Mission</option>
-        </select>
+<p>
+The future of aerospace mission planning.
+</p>
 
-        <button onclick="calculateMission()">
-            Calculate Mission
-        </button>
+<a href="#planner" class="btn">
+Launch Mission →
+</a>
+</div>
 
-        <div class="results" id="results"></div>
+<div class="earth"></div>
 
-        <canvas id="missionChart"></canvas>
+</section>
 
-    </div>
+<section id="rockets">
+
+<h2 class="section-title">
+Launch Systems
+</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Falcon Heavy</h3>
+<p>Heavy-lift launch vehicle optimized for reliability and payload delivery.</p>
+</div>
+
+<div class="card">
+<h3>Starship</h3>
+<p>Fully reusable next-generation spacecraft for interplanetary missions.</p>
+</div>
+
+<div class="card">
+<h3>NASA SLS</h3>
+<p>Deep-space exploration rocket designed for lunar and Mars missions.</p>
+</div>
 
 </div>
 
+</section>
+
+<section id="planner">
+
+<h2 class="section-title">
+Mission Planner
+</h2>
+
+<select id="destination">
+<option>Earth Orbit</option>
+<option>Moon</option>
+<option>Mars</option>
+</select>
+
+<button onclick="simulateMission()">
+Simulate Mission
+</button>
+
+<div class="dashboard">
+
+<div class="metric">
+Mission Fuel
+<h2 id="fuel">0%</h2>
+</div>
+
+<div class="metric">
+Velocity
+<h2 id="velocity">0 km/s</h2>
+</div>
+
+<div class="metric">
+Status
+<h2 id="status">Ready</h2>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<h3>AeroVision™</h3>
+
+<p>Explore. Simulate. Innovate.</p>
+
+<br>
+
+<p>
+© 2026 AeroVision Technologies. All Rights Reserved.
+</p>
+
+</footer>
+
 <script>
 
-let chart;
+function animateValue(id,target,suffix){
 
-function calculateMission(){
+let value=0;
 
-    const mission = document.getElementById("mission").value;
-    const rocket = document.getElementById("rocket").value;
+let interval=setInterval(()=>{
 
-    let fuel = 0;
-    let time = 0;
-    let payload = 0;
+value+=target/50;
 
-    if(mission === "satellite"){
-        fuel = 500;
-        time = 2;
-        payload = 20;
-    }
+if(value>=target){
+value=target;
+clearInterval(interval);
+}
 
-    if(mission === "moon"){
-        fuel = 2500;
-        time = 72;
-        payload = 40;
-    }
+document.getElementById(id).innerText=
+value.toFixed(1)+suffix;
 
-    if(mission === "mars"){
-        fuel = 10000;
-        time = 210;
-        payload = 100;
-    }
+},20);
 
-    if(rocket === "falcon"){
-        payload *= 1;
-    }
+}
 
-    if(rocket === "starship"){
-        payload *= 2;
-    }
+function simulateMission(){
 
-    if(rocket === "sls"){
-        payload *= 1.5;
-    }
+let destination=
+document.getElementById("destination").value;
 
-    document.getElementById("results").innerHTML = `
-        <h3>Mission Report</h3>
-        <p>⛽ Fuel Required: <b>${fuel} tons</b></p>
-        <p>🕒 Travel Time: <b>${time} hours/days</b></p>
-        <p>📦 Payload Capacity: <b>${payload} tons</b></p>
-    `;
+let fuel;
+let velocity;
 
-    const ctx = document.getElementById("missionChart");
+if(destination==="Earth Orbit"){
+fuel=78;
+velocity=7.8;
+}
 
-    if(chart){
-        chart.destroy();
-    }
+if(destination==="Moon"){
+fuel=92;
+velocity=11.2;
+}
 
-    chart = new Chart(ctx,{
-        type:"bar",
-        data:{
-            labels:["Fuel","Travel Time","Payload"],
-            datasets:[{
-                label:"Mission Data",
-                data:[fuel,time,payload]
-            }]
-        },
-        options:{
-            responsive:true
-        }
-    });
+if(destination==="Mars"){
+fuel=99;
+velocity=16.4;
+}
+
+animateValue("fuel",fuel,"%");
+animateValue("velocity",velocity," km/s");
+
+document.getElementById("status").innerText=
+"Mission Active";
+
 }
 
 </script>
